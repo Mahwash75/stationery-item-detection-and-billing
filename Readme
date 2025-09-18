@@ -1,0 +1,88 @@
+
+---
+
+## 🧾 AI-Based Automatic Stationery Billing System
+
+### 📌 Project Overview
+
+This project implements an **AI-powered vision-based billing system** that automatically detects and counts stationery items (eraser, scale, pencil, sharpener) from images or video frames, then **generates a formatted bill** with item counts and prices.
+
+Built as part of **** course (CS-5031, Spring 2025), this project demonstrates the full pipeline of an applied computer vision solution: **data collection → annotation → model training → GUI development → real-time inference and billing.**
+
+---
+
+### 🧠 Core Features
+
+* 📸 Detects multiple stationery items in a single image or video frame
+* 🧮 Counts quantities of each detected item
+* 💰 Calculates total bill using predefined prices
+* 🖼️ Annotates results (item name, confidence, price) directly on images or video frames
+* 🖥️ GUI application for user-friendly interaction
+
+---
+
+### 📁 Dataset
+
+* Collected a **custom dataset of 500+ images** of erasers, scales, pencils, and sharpeners
+* Images taken in different combinations and backgrounds (some from  Images)
+* Labeled using **** and saved in ** format**
+* Split into:
+
+  * `train/` (60%)
+  * `val/` (20%)
+  * `test/` (20%)
+* Defined dataset structure in a `.yaml` configuration file
+
+---
+
+### ⚙️ Tech Stack
+
+* **** — Programming language
+* **** — Object detection model framework
+* **** — Image/video processing, bounding boxes
+* **** — GUI development
+* **** — Result visualization
+* **** — Numerical operations
+* **** — Training environment with GPU acceleration
+
+---
+
+### ⚡ How It Works
+
+#### Step 1 — Train YOLO Model
+
+```python
+from ultralytics import YOLO
+
+model = YOLO('yolov8n.pt')
+model.train(data='stationery_dataset.yaml', epochs=50, imgsz=640)
+```
+
+#### Step 2 — Run GUI Billing App
+
+* Upload an image (or load a video)
+* Detects items, counts them, and generates a bill
+* Annotated output shows each item with its price and the total bill
+
+---
+
+### 💰 Billing Example
+
+| Item      | Price (PKR) |
+| --------- | ----------- |
+| Eraser    | 10          |
+| Scale     | 20          |
+| Pencil    | 15          |
+| Sharpener | 25          |
+
+> These prices are configurable in the code.
+
+---
+
+### 📦 Output
+
+* Annotated images with bounding boxes and labels
+* Annotated video showing frame-by-frame detections and running bill
+* GUI displaying the final bill summary
+
+---
